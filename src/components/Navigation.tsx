@@ -29,46 +29,45 @@ const Navigation = () => {
   );
 
   return (
-    <nav className="border-b border-gray-200 bg-white sticky top-0 z-50 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+    <nav className="border-b border-gray-200 bg-white sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-[#242424] font-serif">
-              Scribe
-            </h1>
-          </Link>
-
-          {/* Center Nav Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <NavLink to="/" label="Home" />
-            <NavLink to="/our-story" label="Our Story" />
-            <NavLink to="/membership" label="Membership" />
+          <div className="flex items-center gap-8">
+            <Link to="/" className="flex items-center">
+              <h1 className="text-3xl font-serif font-bold text-gray-900">
+                Scribe
+              </h1>
+            </Link>
+            <div className="hidden md:flex items-center gap-6 text-sm">
+              <NavLink to="/our-story" label="Our story" />
+              <NavLink to="/membership" label="Membership" />
+            </div>
           </div>
 
-          {/* Right Side */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4">
             {authenticated ? (
               <>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate("/write")}
+                  className="text-gray-600 hover:text-gray-900"
                 >
-                  <PenSquare className="h-4 w-4 mr-2" />
+                  <PenSquare className="h-5 w-5 mr-1" />
                   Write
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate("/profile")}
+                  className="text-gray-600 hover:text-gray-900"
                 >
-                  <User className="h-4 w-4 mr-2" />
+                  <User className="h-5 w-5 mr-1" />
                   Profile
                 </Button>
-                <Button variant="ghost" size="sm" onClick={handleLogout}>
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
+                <Button variant="ghost" size="sm" onClick={handleLogout} className="text-gray-600 hover:text-gray-900">
+                  <LogOut className="h-5 w-5 mr-1" />
+                  Sign out
                 </Button>
               </>
             ) : (
@@ -77,15 +76,16 @@ const Navigation = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate("/login")}
+                  className="text-gray-600 hover:text-gray-900"
                 >
                   Sign In
                 </Button>
                 <Button
                   size="sm"
                   onClick={() => navigate("/signup")}
-                  className="bg-[#1A8917] text-white hover:bg-[#0F730C]"
+                  className="bg-gray-900 text-white hover:bg-gray-800 rounded-full"
                 >
-                  Get Started
+                  Get started
                 </Button>
               </>
             )}

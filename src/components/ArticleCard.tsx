@@ -25,29 +25,29 @@ const ArticleCard = ({
     (body || "").substring(0, 200) + ((body || "").length > 200 ? "..." : "");
 
   return (
-    <Card className="p-6 hover:shadow-elegant transition-smooth border-border group">
+    <div className="group">
       <Link to={`/article/${slug}`}>
-        <h2 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors font-serif">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="h-5 w-5 rounded-full bg-gray-900 flex items-center justify-center">
+            <User className="h-3 w-3 text-white" />
+          </div>
+          <span className="text-sm font-medium text-gray-900">
+            {author.username}
+          </span>
+        </div>
+        <h2 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 group-hover:text-gray-700 transition-colors font-serif line-clamp-2">
           {title}
         </h2>
-        <p className="text-secondary mb-4 line-clamp-3 leading-relaxed">
+        <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
           {excerpt}
         </p>
-        <div className="flex items-center justify-between text-sm text-tertiary">
-          <div className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-              <User className="h-4 w-4" />
-            </div>
-            <span className="font-medium text-secondary">
-              {author.username}
-            </span>
-          </div>
-          <time className="text-tertiary">
+        <div className="flex items-center justify-between text-xs text-gray-500">
+          <time>
             {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
           </time>
         </div>
       </Link>
-    </Card>
+    </div>
   );
 };
 
